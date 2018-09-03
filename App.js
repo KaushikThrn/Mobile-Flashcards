@@ -1,29 +1,43 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import AddDeck from './components/AddDeck';
 import DeckDetails from './components/DeckDetails';
+import {decks} from './reducers/index.js'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 
-class App extends React.Component {
+ export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+         <Provider store={createStore(decks)}>
+          <StackNav />
+        </Provider>
     );
   }
 }
 
-export default createBottomTabNavigator(
+const Tabs= createBottomTabNavigator(
   {
-    App: App,
-    Add: AddDeck,
-    DeckDetails: DeckDetails,
+    Add: {
+      screen:AddDeck
+    },
+    DeckDetails: {
+      screen:DeckDetails
+    },
   }
 );
+
+const StackNav= createStackNavigator({
+    Home:{
+      screen:Tabs
+    },
+    
+});
+
+
+
 
 const styles = StyleSheet.create({
   container: {

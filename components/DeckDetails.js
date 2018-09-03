@@ -5,7 +5,8 @@ import {
     Text,
     View,
     TouchableOpacity,
-    ActivityIndicator
+    ActivityIndicator,
+    Button
 } from 'react-native';
 
 class DeckDetails extends Component {
@@ -13,6 +14,12 @@ class DeckDetails extends Component {
         return (
             <View>
                 <Text>Deck Details</Text>
+                <View>
+                <Text>Add Deck</Text>
+                 <Button
+                  title="Deck details"
+                  onPress={() => this.props.navigation.navigate('DeckDetails')}/>
+            </View>
             </View>
         )
     }
