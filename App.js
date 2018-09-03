@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import AddDeck from './components/AddDeck';
+import DeckDetails from './components/DeckDetails';
 
-export default class App extends React.Component {
+
+class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -12,6 +16,14 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default createBottomTabNavigator(
+  {
+    App: App,
+    Add: AddDeck,
+    DeckDetails: DeckDetails,
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
