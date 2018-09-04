@@ -9,20 +9,19 @@ import {
     Button
 } from 'react-native';
 
+const mapStatetoProps=(state)=>{
+    return{deck:state.decks}
+}
+
 class DeckDetails extends Component {
  render(){
         return (
             <View>
-                <Text>Deck Details</Text>
-                <View>
-                <Text>Add Deck</Text>
-                 <Button
-                  title="Deck details"
-                  onPress={() => this.props.navigation.navigate('DeckDetails')}/>
-            </View>
+                <Text>Displaying the Deck</Text>
+                <Text>{this.props.deck[0]["name"]}</Text>
             </View>
         )
     }
 }
 
-export default DeckDetails
+export default connect(mapStatetoProps)(DeckDetails)

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import AddDeck from './components/AddDeck';
 import DeckDetails from './components/DeckDetails';
+import Decks from './components/Decks';
 import {decks} from './reducers/index.js'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -20,12 +21,16 @@ import { Provider } from 'react-redux'
 
 const Tabs= createBottomTabNavigator(
   {
-    Add: {
-      screen:AddDeck
+    Decks: {
+      screen:Decks
     },
     DeckDetails: {
       screen:DeckDetails
     },
+    AddDeck: {
+      screen:AddDeck
+    },
+    
   }
 );
 

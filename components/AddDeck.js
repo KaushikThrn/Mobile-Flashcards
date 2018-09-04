@@ -11,25 +11,46 @@ import {
     Keyboard,
     Button
 } from 'react-native';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
 const mapStatetoProps=(state)=>{
     return{deck:state.decks}
 }
 
+const mapDispatchtoProps=(dispatch)=>{
+   return {
+    onSubmit:(name)=>{
+        dispatch({
+            type:"ADD",
+            name
+        })
+    }
+   } 
+}
+
 
 class AddDeck extends Component {
+    state={
+        title:"",
+    }
+    
+    updateTitle=(title)=>{
+        this.setState({title:title})
+
+    }
+
     render(){
 
         return (
             <View>
-                <Text>Add Deck</Text>
-                <Text>{this.props.deck[0]}</Text>
+               <FormLabel>Deck Name</FormLabel>
+                <FormInput onChangeText={(Text)=>{this.updateTitle(Text)}} />
                  <Button
-                  title="Deck details"
-                  onPress={() => this.props.navigation.navigate('DeckDetails')}/>
+                  title="Submit" onPress={()=>{this.props.onSubmit(this.state.title)}}/>
+                  <Text>{this.state.title}</Text>
             </View>
         )
     }
 }
    
-export default connect(mapStatetoProps)(AddDeck)
+export default connect(mapStatetoProps,mapDispatchtoProps)(AddDeck)
