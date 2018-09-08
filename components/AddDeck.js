@@ -12,6 +12,7 @@ import {
     Button
 } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import {saveDeckTitle} from '../utils/api'
 
 const mapStatetoProps=(state)=>{
     return{deck:state.decks}
@@ -25,6 +26,8 @@ const mapDispatchtoProps=(dispatch)=>{
             type:"ADD-DECK",
             entry:{[name]:{cards:[]}}
         })
+        //add in async storage
+        saveDeckTitle({[name]:{cards:[]}})
     }
    } 
 }

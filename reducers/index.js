@@ -5,6 +5,11 @@ const initState = {
 }
 export function decks (state = {}, action) {
     switch (action.type) {
+        case "INSERTDECKS":
+                return {
+                    ...state,
+                    ...action.entries
+                }
         case "ADD-DECK":
                 return {
                     ...state,

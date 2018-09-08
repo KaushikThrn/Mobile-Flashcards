@@ -9,17 +9,28 @@ import {
     ActivityIndicator,
     Button
 } from 'react-native';
+import {fetchAllDecks,removeAllDecks} from '../utils/api'
 
 const mapStatetoProps=(state)=>{
     return {decks:state}
 }
 
 class Decks extends Component {
+    state={ready:true}
+
+    componentDidMount () {
+    const { dispatch } = this.props
+
+    fetchAllDecks()
+      .then((entries) => {dispatch({type:"INSERTDECKS",entries})})
+  }
+   
 
  render(){
         const {decks}=this.props
         console.log("this here",decks)
-        return (
+        if(this.state.ready){
+            return (
             <View>
                 <Text>Displaying the Deck</Text>{
                 Object.keys(this.props.decks).length>0?Object.keys(this.props.decks).map((deck)=>{
@@ -32,6 +43,13 @@ class Decks extends Component {
                 ):<Text>No decks</Text>}
             </View>
         )
+        }
+        else{
+            return(
+                <View><Text>loading</Text></View>
+                )
+        }
+        
     }
 }
 

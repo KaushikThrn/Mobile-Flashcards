@@ -1,6 +1,8 @@
 import { AsyncStorage } from 'react-native'
-import { DECK_STORAGE_KEY } from './helpers'
 
+
+
+const DECK_STORAGE_KEY = 'MobileFlashCards:decks'
 /**
  * @description fetch all decks from async storage
  */
@@ -27,8 +29,8 @@ export function fetchDeck (title) {
  * @description create a new deck by adding it's name as the key to an empty array
  * @param { string } title - Name of deck to create
  */
-export function saveDeckTitle (title) {
-    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({ [title]: { title: title, questions: [] } }))
+export function saveDeckTitle (entry) {
+    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(entry))
 }
 
 /**
@@ -59,5 +61,9 @@ export function removeDeck (deck) {
             delete data[deck]
             AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data))
         })
+}
+
+export function removeAllDecks () {
+    return AsyncStorage.removeItem(DECK_STORAGE_KEY)
 }
 
