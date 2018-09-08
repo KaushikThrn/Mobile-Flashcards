@@ -8,20 +8,21 @@ import {
     ActivityIndicator,
     Button
 } from 'react-native';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
-const mapStatetoProps=(state)=>{
-    return{deck:state.decks}
-}
+
+
 
 class DeckDetails extends Component {
+ 
  render(){
+      const {navigation}=this.props
         return (
             <View>
-                <Text>Displaying the Deck</Text>
-                <Text>{this.props.deck[0]["name"]}</Text>
+                <Text>{navigation.getParam("deckName")}</Text>
             </View>
         )
     }
 }
 
-export default connect(mapStatetoProps)(DeckDetails)
+export default connect()(DeckDetails)

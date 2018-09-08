@@ -20,9 +20,10 @@ const mapStatetoProps=(state)=>{
 const mapDispatchtoProps=(dispatch)=>{
    return {
     onSubmit:(name)=>{
+
         dispatch({
-            type:"ADD",
-            name
+            type:"ADD-DECK",
+            entry:{[name]:{cards:[]}}
         })
     }
    } 

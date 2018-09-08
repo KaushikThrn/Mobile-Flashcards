@@ -4,6 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import AddDeck from './components/AddDeck';
 import DeckDetails from './components/DeckDetails';
 import Decks from './components/Decks';
+import Deck from './components/Deck';
 import {decks} from './reducers/index.js'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -24,9 +25,6 @@ const Tabs= createBottomTabNavigator(
     Decks: {
       screen:Decks
     },
-    DeckDetails: {
-      screen:DeckDetails
-    },
     AddDeck: {
       screen:AddDeck
     },
@@ -37,6 +35,12 @@ const Tabs= createBottomTabNavigator(
 const StackNav= createStackNavigator({
     Home:{
       screen:Tabs
+    },
+    DeckDetails: {
+      screen:DeckDetails
+    },
+    Deck: {
+      screen:Deck
     },
     
 });

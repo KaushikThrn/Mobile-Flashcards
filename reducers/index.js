@@ -3,14 +3,14 @@ import { GET_DECKS, GET_DECK, ADD_DECK, ADD_CARD_TO_DECK } from '../actions'
 const initState = {
     decks: [],
 }
-export function decks (state = initState, action) {
+export function decks (state = {}, action) {
     switch (action.type) {
-        case "ADD":
+        case "ADD-DECK":
                 return {
                     ...state,
-                    decks:state.decks.concat({name: action.name,cards:[]})
+                    ...action.entry
                 }
-        case "REMOVE":
+        case "ADD-CARD":
             return {
                 ...state,
                 deck: action.deck
