@@ -6,6 +6,7 @@ import DeckView from './components/DeckView';
 import DeckDetails from './components/DeckDetails';
 import Decks from './components/Decks';
 import Deck from './components/Deck';
+import Quiz from './components/Quiz';
 import {decks} from './reducers/index.js'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -45,6 +46,9 @@ const StackNav= createStackNavigator({
     },
     DeckView: {
       screen:DeckView
+    },
+    Quiz: {
+      screen:Quiz
     },
     
 });

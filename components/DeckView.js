@@ -10,6 +10,13 @@ import {
     Button
 } from 'react-native';
 
+
+const mapStatetoProps=(state)=>{
+   return {
+       decks:state
+   } 
+}
+
 class DeckView extends Component {
 
  render(){
@@ -19,18 +26,18 @@ class DeckView extends Component {
     return(
             <View>
             <Text>{deckName}</Text>
-            <Text>{length} cards</Text>
+            <Text>{this.props.decks[deckName]["cards"].length} cards</Text>
             <Button
-                  title="AddCard" onPress={()=>{}}/>
+                  title="AddCard" onPress={()=>{navigation.navigate("DeckDetails",{deckName:deckName})}}/> 
                   <Button
-                  title="Quiz" onPress={()=>{}}/>
+                  title="Quiz" onPress={()=>{navigation.navigate("Quiz",{deckName:deckName})}}/>
             </View>
         )
         
     }
 }
 
-export default DeckView
+export default connect(mapStatetoProps)(DeckView)
 
 
 

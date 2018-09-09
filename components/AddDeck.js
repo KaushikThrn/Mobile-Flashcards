@@ -27,7 +27,7 @@ const mapDispatchtoProps=(dispatch)=>{
             entry:{[name]:{cards:[]}}
         })
         //add in async storage
-        //saveDeckTitle({[name]:{cards:[]}})
+        saveDeckTitle({[name]:{cards:[]}})
     }
    } 
 }
