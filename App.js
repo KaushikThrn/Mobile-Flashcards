@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import AddDeck from './components/AddDeck';
+import DeckView from './components/DeckView';
 import DeckDetails from './components/DeckDetails';
 import Decks from './components/Decks';
 import Deck from './components/Deck';
@@ -41,6 +42,9 @@ const StackNav= createStackNavigator({
     },
     Deck: {
       screen:Deck
+    },
+    DeckView: {
+      screen:DeckView
     },
     
 });

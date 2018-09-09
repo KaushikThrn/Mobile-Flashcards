@@ -17,8 +17,8 @@ class Deck extends Component {
         const {deckName, length}=this.props
         return (
             <View>
-                <Text onPress={()=>{this.props.navigation.navigate("DeckDetails",{deckName,length})}}>{deckName}</Text>
-                <Text>{length}</Text>
+                <Text onPress={()=>{this.props.navigation.navigate("DeckView",{deckName,length})}}>{deckName}</Text>
+                <Text>{length} Cards</Text>
             </View>
         )
     }
