@@ -57,6 +57,7 @@ class Quiz extends Component {
    const length=this.props.deck[deckName]["cards"].length
    return(
             <View>
+            <Text>{this.state.index+1}/{length}</Text>
             {this.state.done?<Text>Done, Your score is {(this.state.correct/length)*100}% </Text>:this.state.showAnswer?<Text>{cards[this.state.index]["question"]}</Text>:<Text>{cards[this.state.index]["answer"]}</Text>}
             <Button title="Answer" onPress={()=>{this.toggleCard()}}/>
             <Button title="Correct" onPress={()=>{this.correct(length)}}/>
