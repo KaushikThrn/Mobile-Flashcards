@@ -9,7 +9,25 @@ import {
     Button
 } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import {addCardToDeck} from '../utils/api'
 
+const mapDispatchtoProps=(dispatch)=>{
+   return {
+    onSubmit:(deckName,question,answer)=>{
+        dispatch({
+            type:"ADD-CARD",
+            deckName,
+            entry:{question:question,answer:answer}
+        })
+        //add card to async storage
+        addCardToDeck(deckName,question,answer)
+    }
+   } 
+}
+
+const mapStatetoProps=(state)=>{
+    return{deck:state.decks}
+}
 
 class DeckDetails extends Component {
     state={question:"",
@@ -21,14 +39,17 @@ class DeckDetails extends Component {
     }
  render(){
       const {navigation}=this.props
+      const deckName=navigation.getParam("deckName")
         return (
             <View>
-                <Text>{navigation.getParam("deckName")}</Text>
+                <Text>{deckName}</Text>
                 <View>
                     <FormLabel>Question</FormLabel>
                     <FormInput onChangeText={(text)=>{this.updateTitle("question",text)}} />
                     <FormLabel>Answer</FormLabel>
                     <FormInput onChangeText={(text)=>{this.updateTitle("answer",text)}} />
+                    <Button
+                     title="Submit" onPress={()=>{this.props.onSubmit(deckName,this.state.question,this.state.answer)}}/>
                     <Text>{this.state.question}</Text>
                     <Text>{this.state.answer}</Text>
             </View>
@@ -37,4 +58,4 @@ class DeckDetails extends Component {
     }
 }
 
-export default connect()(DeckDetails)
+export default connect(mapStatetoProps,mapDispatchtoProps)(DeckDetails)
