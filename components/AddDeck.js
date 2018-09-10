@@ -36,21 +36,31 @@ class AddDeck extends Component {
 
     state={
         title:"",
+        error:false
     }
     
     updateTitle=(title)=>{
-        this.setState({title:title})
+            this.setState({error:false})
+            this.setState({title:title})
+        }
 
-    }
+    submit=(title)=>{
+            
+            this.props.onSubmit(title)
+            this.setState({title:""});
+        }
+        
+
 
     render(){
 
         return (
             <View>
                <FormLabel>Deck Name</FormLabel>
-                <FormInput onChangeText={(Text)=>{this.updateTitle(Text)}} />
+                <FormInput value={this.state.title} onChangeText={(Text)=>{this.updateTitle(Text)}} />
+                {this.state.error?<FormValidationMessage>This field is required</FormValidationMessage>:null}
                  <Button
-                  title="Submit" onPress={()=>{this.props.onSubmit(this.state.title)}}/>
+                  title="Submit" onPress={()=>{this.state.title===""?this.setState({error:true}):this.submit(this.state.title)}}/>
             </View>
         )
     }

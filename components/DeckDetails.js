@@ -33,11 +33,17 @@ class DeckDetails extends Component {
     title: 'Add Card',
  };
     state={question:"",
-           answer:""
+           answer:"",
+           error:false
 }
  updateTitle=(key,value)=>{
-        this.setState({[key]:value})
+        this.setState({[key]:value,error:false})
 
+    }
+
+    submit=(deckName,question,answer)=>{
+        this.props.onSubmit(deckName,question,answer)
+        this.setState({question:"",answer:""})
     }
  render(){
       const {navigation}=this.props
@@ -47,11 +53,12 @@ class DeckDetails extends Component {
                 <Text>{deckName}</Text>
                 <View>
                     <FormLabel>Question</FormLabel>
-                    <FormInput onChangeText={(text)=>{this.updateTitle("question",text)}} />
+                    <FormInput value={this.state.question} onChangeText={(text)=>{this.updateTitle("question",text)}} />
                     <FormLabel>Answer</FormLabel>
-                    <FormInput onChangeText={(text)=>{this.updateTitle("answer",text)}} />
+                    <FormInput value={this.state.answer} onChangeText={(text)=>{this.updateTitle("answer",text)}} />
+                    {this.state.error?<FormValidationMessage>All fields are required</FormValidationMessage>:null}
                     <Button
-                     title="Submit" onPress={()=>{this.props.onSubmit(deckName,this.state.question,this.state.answer)}}/>
+                     title="Submit" onPress={()=>{(this.state.question===""||this.state.answer==="")?this.setState({error:true}):this.submit(deckName,this.state.question,this.state.answer)}}/>
             </View>
             </View>
         )

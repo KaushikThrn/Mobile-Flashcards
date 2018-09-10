@@ -58,7 +58,8 @@ static navigationOptions = {
    const deckName=this.props.navigation.getParam("deckName")
    const cards=this.props.deck[deckName]["cards"]
    const length=this.props.deck[deckName]["cards"].length
-   return(
+   if(length>0){
+   return( 
             <View>
             <Text>{this.state.index+1}/{length}</Text>
             {this.state.done?<Text>Done, Your score is {(this.state.correct/length)*100}% </Text>:this.state.showAnswer?<Text>{cards[this.state.index]["question"]}</Text>:<Text>{cards[this.state.index]["answer"]}</Text>}
@@ -66,7 +67,12 @@ static navigationOptions = {
             <Button title="Correct" onPress={()=>{this.correct(length)}}/>
             <Button title="Incorrect" onPress={()=>{this.incorrect(length)}}/>
             </View>
+        )}
+    else{
+      return(
+        <View><Text>There are no cards in this deck</Text></View>
         )
+    }
         
     }
 }
