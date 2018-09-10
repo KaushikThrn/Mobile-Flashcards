@@ -18,10 +18,13 @@ const mapStatetoProps=(state)=>{
 }
 
 class Quiz extends Component {
+
+static navigationOptions = {
+    title: 'Quiz',
+ };
+
   state={
     index:0,
-    question:"",
-    answer:"",
     correct:0,
     incorrect:0,
     showAnswer:false,

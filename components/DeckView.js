@@ -7,8 +7,10 @@ import {
     View,
     TouchableOpacity,
     ActivityIndicator,
-    Button
+    Button,
+    Animated 
 } from 'react-native';
+import {clearLocalNotifications,setLocalNotification} from '../utils/helpers'
 
 
 const mapStatetoProps=(state)=>{
@@ -19,19 +21,42 @@ const mapStatetoProps=(state)=>{
 
 class DeckView extends Component {
 
+    static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam('deckName'),
+    };
+  };
+
+  state={
+    opacity:new Animated.Value(0)
+  }
+
+  componentDidMount() {
+    const {opacity}=this.state
+    Animated.timing(opacity,{toValue:1,duration:2000}).start()
+  }
+
+  openQuiz=(deckName)=>{
+
+    clearLocalNotifications()
+      .then(setLocalNotification)
+    this.props.navigation.navigate("Quiz",{deckName:deckName})
+  }
+
  render(){
     const {navigation}=this.props
     const deckName=navigation.getParam("deckName")
     const length=navigation.getParam("length")
+    const {opacity}=this.state
     return(
-            <View>
+            <Animated.View style={[{opacity}]}>
             <Text>{deckName}</Text>
             <Text>{this.props.decks[deckName]["cards"].length} cards</Text>
             <Button
                   title="AddCard" onPress={()=>{navigation.navigate("DeckDetails",{deckName:deckName})}}/> 
                   <Button
-                  title="Quiz" onPress={()=>{navigation.navigate("Quiz",{deckName:deckName})}}/>
-            </View>
+                  title="Quiz" onPress={()=>{this.openQuiz(deckName)}}/>
+            </Animated.View>
         )
         
     }

@@ -10,25 +10,27 @@ import {
     Button
 } from 'react-native';
 import {fetchAllDecks,removeAllDecks} from '../utils/api'
+import {getDecks} from '../actions/index'
 
 const mapStatetoProps=(state)=>{
     return {decks:state}
 }
 
 class Decks extends Component {
+    
+
     state={ready:true}
 
     componentDidMount () {
     const { dispatch } = this.props
 
     fetchAllDecks()
-      .then((entries) => {dispatch({type:"INSERTDECKS",entries})})
+      .then((entries) => {dispatch(getDecks(entries))})
   }
    
 
  render(){
         const {decks}=this.props
-        console.log("this here",decks)
         if(this.state.ready){
             return (
             <View>

@@ -1,11 +1,9 @@
-import { GET_DECKS, GET_DECK, ADD_DECK, ADD_CARD_TO_DECK } from '../actions'
-
 const initState = {
     decks: [],
 }
 export function decks (state = {}, action) {
     switch (action.type) {
-        case "INSERTDECKS":
+        case "INSERT_DECKS":
                 return {
                     ...state,
                     ...action.entries

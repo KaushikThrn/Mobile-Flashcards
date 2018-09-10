@@ -1,24 +1,25 @@
-export const GET_DECKS = 'GET_DECKS'
-export const GET_DECK = 'GET_DECK'
 
-/**
- * @description take a list of decks and return it along with the type GET_DECKS
- * @param { array } decks
- */
-export function getDecks (decks) {
+//Get all the decks from async storage and insert into redux store
+export function getDecks (entries) {
     return {
-        type: GET_DECKS,
-        decks
+        type: "INSERT_DECKS",
+        entries
     }
 }
 
-/**
- * @description take a deck and return it along with the type GET_DECK
- * @param { Object } deck
- */
-export function getDeck (deck) {
+//add a new deck to the redux store
+export function addDeckName (name) {
     return {
-        type: GET_DECK,
-        deck
+        type: "ADD-DECK",
+        entry:{[name]:{cards:[]}}
     }
+}
+
+//add a new card to the redux store
+export function addCard (deckName,question,answer) {
+    return {
+            type:"ADD-CARD",
+            deckName,
+            entry:{question:question,answer:answer}
+        }
 }

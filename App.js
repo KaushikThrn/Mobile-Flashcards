@@ -10,9 +10,14 @@ import Quiz from './components/Quiz';
 import {decks} from './reducers/index.js'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import {setLocalNotification} from './utils/helpers'
 
 
  export default class App extends React.Component {
+  
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
          <Provider store={createStore(decks)}>

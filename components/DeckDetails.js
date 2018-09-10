@@ -10,15 +10,14 @@ import {
 } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import {addCardToDeck} from '../utils/api'
+import {addCard} from '../actions/index'
 
 const mapDispatchtoProps=(dispatch)=>{
    return {
     onSubmit:(deckName,question,answer)=>{
-        dispatch({
-            type:"ADD-CARD",
-            deckName,
-            entry:{question:question,answer:answer}
-        })
+        //Add the card to redux store
+        dispatch(addCard(deckName,question,answer))
+
         //add card to async storage
         addCardToDeck(deckName,question,answer)
     }
@@ -30,6 +29,9 @@ const mapStatetoProps=(state)=>{
 }
 
 class DeckDetails extends Component {
+    static navigationOptions = {
+    title: 'Add Card',
+ };
     state={question:"",
            answer:""
 }
@@ -50,8 +52,6 @@ class DeckDetails extends Component {
                     <FormInput onChangeText={(text)=>{this.updateTitle("answer",text)}} />
                     <Button
                      title="Submit" onPress={()=>{this.props.onSubmit(deckName,this.state.question,this.state.answer)}}/>
-                    <Text>{this.state.question}</Text>
-                    <Text>{this.state.answer}</Text>
             </View>
             </View>
         )

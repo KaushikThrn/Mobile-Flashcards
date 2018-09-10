@@ -3,9 +3,8 @@ import { AsyncStorage } from 'react-native'
 
 
 const DECK_STORAGE_KEY = 'MobileFlashCards:decks'
-/**
- * @description fetch all decks from async storage
- */
+
+//fetch all decks from async storage
 export function fetchAllDecks () {
     return AsyncStorage.getItem(DECK_STORAGE_KEY)
         .then( (results) => {
@@ -51,10 +50,8 @@ export function addCardToDeck (deckName, question,answer) {
         })
 }
 
-/**
- * @description remove a deck from storage
- * @param { string } deck - which deck to remove
- */
+
+ //remove a deck from storage
 export function removeDeck (deck) {
     return AsyncStorage.getItem(DECK_STORAGE_KEY)
         .then((results) => {
@@ -64,7 +61,7 @@ export function removeDeck (deck) {
             AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data))
         })
 }
-
+//remove all decks from async storage
 export function removeAllDecks () {
     return AsyncStorage.removeItem(DECK_STORAGE_KEY)
 }
