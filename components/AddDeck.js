@@ -38,12 +38,12 @@ class AddDeck extends Component {
         title:"",
         error:false
     }
-    
+    //update the state values of the deck name
     updateTitle=(title)=>{
             this.setState({error:false})
             this.setState({title:title})
         }
-
+    //submit the deck title
     submit=(title)=>{
             
             this.props.onSubmit(title)

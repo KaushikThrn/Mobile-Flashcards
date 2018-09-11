@@ -4,13 +4,13 @@ import { Notifications, Permissions } from 'expo'
 
 
 const NOTIFICATION_KEY = 'MobileFlashCards:notifications'
-
+//clear notifications
 export function clearLocalNotifications () {
     return AsyncStorage.removeItem(NOTIFICATION_KEY)
         .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
-
+//Create a notification to take the quiz
 export function createNotification () {
     return {
         title: 'Take a quiz!',

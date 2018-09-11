@@ -35,7 +35,7 @@ class DeckView extends Component {
     const {opacity}=this.state
     Animated.timing(opacity,{toValue:1,duration:2000}).start()
   }
-
+//open the quiz view
   openQuiz=(deckName)=>{
 
     clearLocalNotifications()

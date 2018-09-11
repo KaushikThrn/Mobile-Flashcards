@@ -36,11 +36,12 @@ class DeckDetails extends Component {
            answer:"",
            error:false
 }
+//set the state values for question and answer
  updateTitle=(key,value)=>{
         this.setState({[key]:value,error:false})
 
     }
-
+    //submit the card values
     submit=(deckName,question,answer)=>{
         this.props.onSubmit(deckName,question,answer)
         this.setState({question:"",answer:""})

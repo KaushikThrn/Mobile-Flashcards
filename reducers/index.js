@@ -1,6 +1,3 @@
-const initState = {
-    decks: [],
-}
 export function decks (state = {}, action) {
     switch (action.type) {
         case "INSERT_DECKS":

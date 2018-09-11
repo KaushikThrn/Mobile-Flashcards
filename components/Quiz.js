@@ -30,11 +30,11 @@ static navigationOptions = {
     showAnswer:false,
     done:false
   }
-
+ //Flip the card to show either the question or the answer
   toggleCard=()=>{
     this.setState((prevState)=>({showAnswer:!prevState.showAnswer}))
   }
-
+ //If the guess correct, update the state values
   correct=(length)=>{
     if(this.state.index<length-1){
       this.setState((prevState)=>({correct:prevState.correct+1,index:prevState.index+1}))
@@ -44,7 +44,7 @@ static navigationOptions = {
     }
     
   }
-
+  //If the guess incorrect, update the state values
   incorrect=(length)=>{
     if(this.state.index<length-1){
       this.setState((prevState)=>({incorrect:prevState.incorrect+1,index:prevState.index+1}))
@@ -63,7 +63,7 @@ static navigationOptions = {
             <View>
             <Text>{this.state.index+1}/{length}</Text>
             {this.state.done?<Text>Done, Your score is {(this.state.correct/length)*100}% </Text>:this.state.showAnswer?<Text>{cards[this.state.index]["question"]}</Text>:<Text>{cards[this.state.index]["answer"]}</Text>}
-            <Button title="Answer" onPress={()=>{this.toggleCard()}}/>
+            <Button title="Flip Card" onPress={()=>{this.toggleCard()}}/>
             <Button title="Correct" onPress={()=>{this.correct(length)}}/>
             <Button title="Incorrect" onPress={()=>{this.incorrect(length)}}/>
             </View>

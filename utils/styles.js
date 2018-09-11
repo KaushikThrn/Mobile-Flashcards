@@ -1,12 +1,12 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import * as colors from './colors'
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.white,
-        padding: 10
+        //backgroundColor: colors.white,
+        padding: 10,
+        justifyContent: 'space-evenly'
     },
     center: {
         alignItems: 'center',
@@ -37,15 +37,15 @@ export const styles = StyleSheet.create({
         height: 40,
         padding: 10,
         borderRadius: 5,
-        backgroundColor: colors.white,
+        //backgroundColor: colors.white,
         borderColor: '#222',
         borderWidth: 1
     },
     errorInput: {
-        borderColor: colors.danger
+        //borderColor: colors.danger
     },
     errorText: {
-        color: colors.danger
+        //color: colors.danger
     },
     listItem: {
         flex: 1,
@@ -53,13 +53,13 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 15,
-        backgroundColor: colors.white,
+        //backgroundColor: colors.white,
     },
     spacing: {
         margin: 10
     },
     iosSubmitBtn: {
-        backgroundColor: colors.action,
+        //backgroundColor: colors.action,
         padding: 10,
         borderRadius: 7,
         height: 45,
@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
         marginRight: 40,
       },
       AndroidSubmitBtn: {
-        backgroundColor: colors.action,
+        //backgroundColor: colors.action,
         padding: 10,
         paddingLeft: 30,
         paddingRight: 30,
@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
       },
       AndroidBtn: {
-        backgroundColor: colors.action,
+        //backgroundColor: colors.action,
         padding: 10,
         marginLeft: 30,
         marginRight: 30,
@@ -88,7 +88,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
       },
       submitBtnText: {
-        color: colors.white,
+        //color: colors.white,
         fontSize: 20,
         textAlign: 'center',
       },

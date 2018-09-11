@@ -17,8 +17,10 @@ class Deck extends Component {
         const {deckName, length}=this.props
         return (
             <View>
-                <Text onPress={()=>{this.props.navigation.navigate("DeckView",{deckName,length})}}>{deckName}</Text>
-                <Text>{length} Cards</Text>
+                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("DeckView",{deckName,length})}}>
+                <Text style={{fontSize: 20}}>{deckName}</Text>
+                <Text style={{fontSize: 20}}>{length} Cards</Text>
+                </TouchableOpacity>
             </View>
         )
     }

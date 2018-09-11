@@ -7,10 +7,12 @@ import {
     View,
     TouchableOpacity,
     ActivityIndicator,
-    Button
+    Button,
+    FlatList
 } from 'react-native';
 import {fetchAllDecks,removeAllDecks} from '../utils/api'
 import {getDecks} from '../actions/index'
+import {styles} from '../utils/styles'
 
 const mapStatetoProps=(state)=>{
     return {decks:state}
@@ -19,11 +21,10 @@ const mapStatetoProps=(state)=>{
 class Decks extends Component {
     
 
-    state={ready:true}
 
     componentDidMount () {
     const { dispatch } = this.props
-
+    //Fetch all decks from asyncstorage and insert into redux store
     fetchAllDecks()
       .then((entries) => {dispatch(getDecks(entries))})
   }
@@ -31,27 +32,22 @@ class Decks extends Component {
 
  render(){
         const {decks}=this.props
-        if(this.state.ready){
             return (
-            <View>
-                <Text>Displaying the Deck</Text>{
+            <View style={[styles.container,{alignItems:"center",justifyContent: 'space-around'}]}>
+                <Text style={{fontSize: 30}}>Decks</Text>{
                 Object.keys(this.props.decks).length>0?Object.keys(this.props.decks).map((deck)=>{
                     const length=this.props.decks[deck]["cards"].length
                     return(
-                        <Deck key={deck} deckName={deck} length={length} />
+                        
+                        <Deck key={deck} deckName={deck} length={length} style={{fontSize: 10}}/>
                         )
                     }
 
-                ):<Text>No decks</Text>}
+                ):<Text style={{fontSize: 30}}>No decks</Text>}
             </View>
         )
-        }
-        else{
-            return(
-                <View><Text>loading</Text></View>
-                )
-        }
         
+
     }
 }
 
