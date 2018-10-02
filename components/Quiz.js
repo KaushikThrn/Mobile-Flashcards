@@ -62,10 +62,22 @@ static navigationOptions = {
    return( 
             <View>
             <Text>{this.state.index+1}/{length}</Text>
-            {this.state.done?<Text>Done, Your score is {(this.state.correct/length)*100}% </Text>:this.state.showAnswer?<Text>{cards[this.state.index]["question"]}</Text>:<Text>{cards[this.state.index]["answer"]}</Text>}
-            <Button title="Flip Card" onPress={()=>{this.toggleCard()}}/>
-            <Button title="Correct" onPress={()=>{this.correct(length)}}/>
-            <Button title="Incorrect" onPress={()=>{this.incorrect(length)}}/>
+            {this.state.done?<Text>Done, Your score is {(this.state.correct/length)*100}% 
+            </Text>:this.state.showAnswer?<Text>{cards[this.state.index]["question"]}</Text>:<Text>{cards[this.state.index]["answer"]}</Text>}
+            {this.state.done?(
+            <View>
+              <Button title="Restart Quiz" onPress={()=>{this.toggleCard()}}/>
+              <Button title="Deck View" onPress={()=>{this.correct(length)}}/>
+            </View>
+              ):null}
+            {!this.state.done?(
+            <View>
+              <Button title="Flip Card" onPress={()=>{this.toggleCard()}}/>
+              <Button title="Correct" onPress={()=>{this.correct(length)}}/>
+              <Button title="Incorrect" onPress={()=>{this.incorrect(length)}}/>
+            </View>
+              ):null
+           }
             </View>
         )}
     else{

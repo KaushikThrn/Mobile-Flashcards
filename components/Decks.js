@@ -35,14 +35,14 @@ class Decks extends Component {
             return (
             <View style={[styles.container,{alignItems:"center",justifyContent: 'space-around'}]}>
                 <Text style={{fontSize: 30}}>Decks</Text>{
-                Object.keys(this.props.decks).length>0?Object.keys(this.props.decks).map((deck)=>{
-                    const length=this.props.decks[deck]["cards"].length
+                Object.keys(this.props.decks).length>0?(
+                <FlatList data={Object.keys(this.props.decks)} renderItem={({item})=>
+                {
+                    const length=this.props.decks[item]["cards"].length
                     return(
-                        
-                        <Deck key={deck} deckName={deck} length={length} style={{fontSize: 10}}/>
+                        <Deck key={item} deckName={item} length={length} style={{fontSize: 10}}/>
                         )
-                    }
-
+                    }} />
                 ):<Text style={{fontSize: 30}}>No decks</Text>}
             </View>
         )

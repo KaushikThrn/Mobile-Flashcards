@@ -14,7 +14,7 @@ import {setLocalNotification} from './utils/helpers'
 
 
  export default class App extends React.Component {
-  
+
   componentDidMount() {
     setLocalNotification()
   }
@@ -35,7 +35,7 @@ const Tabs= createBottomTabNavigator(
     AddDeck: {
       screen:AddDeck
     },
-    
+
   }
 );
 
@@ -55,7 +55,7 @@ const StackNav= createStackNavigator({
     Quiz: {
       screen:Quiz
     },
-    
+
 });
 
 
