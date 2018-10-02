@@ -42,7 +42,9 @@ class Decks extends Component {
                     return(
                         <Deck key={item} deckName={item} length={length} style={{fontSize: 10}}/>
                         )
-                    }} />
+                    }}
+                    keyExtractor={(item, index) => index.toString()} 
+                     />
                 ):<Text style={{fontSize: 30}}>No decks</Text>}
             </View>
         )

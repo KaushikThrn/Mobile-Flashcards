@@ -55,7 +55,7 @@ class AddDeck extends Component {
         }
 
     render(){
-        console.log("AddDeck",this.props)
+        
         return (
             <View>
                <FormLabel>Deck Name</FormLabel>

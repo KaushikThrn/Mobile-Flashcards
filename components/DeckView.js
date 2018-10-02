@@ -49,8 +49,8 @@ class DeckView extends Component {
     const {opacity}=this.state
     return(
             <Animated.View style={[{opacity}]}>
-            <Text>{deckName}</Text>
-            <Text>{this.props.decks[deckName]["cards"].length} cards</Text>
+            <Text style={{fontSize: 20}}>{deckName}</Text>
+            <Text style={{fontSize: 20}}>{this.props.decks[deckName]["cards"].length} cards</Text>
             <Button
                   title="AddCard" onPress={()=>{navigation.navigate("DeckDetails",{deckName:deckName})}}/> 
                   <Button

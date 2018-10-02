@@ -51,7 +51,7 @@ class DeckDetails extends Component {
       const deckName=navigation.getParam("deckName")
         return (
             <View>
-                <Text>{deckName}</Text>
+                <Text style={{fontSize: 20}}>{deckName}</Text>
                 <View>
                     <FormLabel>Question</FormLabel>
                     <FormInput value={this.state.question} onChangeText={(text)=>{this.updateTitle("question",text)}} />
