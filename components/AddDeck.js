@@ -47,13 +47,15 @@ class AddDeck extends Component {
     submit=(title)=>{
             
             this.props.onSubmit(title)
-            this.setState({title:""});
-        }
+            this.props.navigation.navigate("DeckView",{deckName:title});
         
+            
+            //this.setState({title:""});
 
+        }
 
     render(){
-
+        console.log("AddDeck",this.props)
         return (
             <View>
                <FormLabel>Deck Name</FormLabel>

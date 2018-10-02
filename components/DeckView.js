@@ -46,7 +46,6 @@ class DeckView extends Component {
  render(){
     const {navigation}=this.props
     const deckName=navigation.getParam("deckName")
-    const length=navigation.getParam("length")
     const {opacity}=this.state
     return(
             <Animated.View style={[{opacity}]}>

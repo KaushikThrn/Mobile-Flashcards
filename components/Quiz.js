@@ -54,6 +54,16 @@ static navigationOptions = {
     }
   }
 
+  restartQuiz=()=>{
+    this.setState({
+      index:0,
+      correct:0,
+      incorrect:0,
+      showAnswer:false,
+      done:false
+    })
+  }
+
  render(){
    const deckName=this.props.navigation.getParam("deckName")
    const cards=this.props.deck[deckName]["cards"]
@@ -66,8 +76,8 @@ static navigationOptions = {
             </Text>:this.state.showAnswer?<Text>{cards[this.state.index]["question"]}</Text>:<Text>{cards[this.state.index]["answer"]}</Text>}
             {this.state.done?(
             <View>
-              <Button title="Restart Quiz" onPress={()=>{this.toggleCard()}}/>
-              <Button title="Deck View" onPress={()=>{this.correct(length)}}/>
+              <Button title="Restart Quiz" onPress={()=>{this.restartQuiz()}}/>
+              <Button title="Back to Deck" onPress={()=>{this.props.navigation.navigate("DeckView",{deckName})}}/>
             </View>
               ):null}
             {!this.state.done?(
