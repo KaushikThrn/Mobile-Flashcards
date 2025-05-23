@@ -22,9 +22,9 @@ export function addCardToDeck (deckName, question,answer) {
         .then((results) => {
             const newCard={question:question,answer:answer}
             const data = JSON.parse(results)
-            state1=Object.assign({},data)
-            state1[deckName]["cards"]=state1[deckName]["cards"].concat(newCard)
-            console.log("addcard",JSON.stringify(state1))
+            const state1 = Object.assign({}, data)
+            state1[deckName]["cards"] = state1[deckName]["cards"].concat(newCard)
+            console.log("addcard", JSON.stringify(state1))
             AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(state1))
             
         })

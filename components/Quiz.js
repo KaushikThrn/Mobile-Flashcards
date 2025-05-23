@@ -73,7 +73,9 @@ static navigationOptions = {
             <View>
             <Text style={{fontSize: 20}}>{this.state.index+1}/{length}</Text>
             {this.state.done?<Text style={{fontSize: 20}}>Done, Your score is {(this.state.correct/length)*100}% 
-            </Text>:this.state.showAnswer?<Text style={{fontSize: 20}}>{cards[this.state.index]["question"]}</Text>:<Text style={{fontSize: 20}}>{cards[this.state.index]["answer"]}</Text>}
+            </Text>:this.state.showAnswer?
+            <Text style={{fontSize: 20}}>{cards[this.state.index]["answer"]}</Text>:
+            <Text style={{fontSize: 20}}>{cards[this.state.index]["question"]}</Text>}
             {this.state.done?(
             <View>
               <Button title="Restart Quiz" onPress={()=>{this.restartQuiz()}}/>

@@ -15,8 +15,8 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 import {saveDeckTitle} from '../utils/api'
 import {addDeckName} from '../actions/index'
 
-const mapStatetoProps=(state)=>{
-    return{deck:state.decks}
+const mapStatetoProps = (state) => {
+    return { deck: state }
 }
 
 const mapDispatchtoProps=(dispatch)=>{
