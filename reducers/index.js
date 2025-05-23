@@ -11,8 +11,8 @@ export function decks (state = {}, action) {
                     ...action.entry
                 }
         case "ADD-CARD":
-                state1=Object.assign({},state)
-                state1[action.deckName]["cards"]=state1[action.deckName]["cards"].concat([action.entry])
+                const state1 = Object.assign({}, state)
+                state1[action.deckName]["cards"] = state1[action.deckName]["cards"].concat([action.entry])
             return state1
         default:
             return state

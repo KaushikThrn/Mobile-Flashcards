@@ -24,8 +24,8 @@ const mapDispatchtoProps=(dispatch)=>{
    } 
 }
 
-const mapStatetoProps=(state)=>{
-    return{deck:state.decks}
+const mapStatetoProps = (state) => {
+    return { deck: state }
 }
 
 class DeckDetails extends Component {
